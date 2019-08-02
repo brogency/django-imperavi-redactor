@@ -1,0 +1,3 @@
+[submodule "django-imperavi-redactor"]
+	path = django-imperavi-redactor
+	url = https://github.com/brogency/django-imperavi-redactor.git
