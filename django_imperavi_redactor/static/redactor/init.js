@@ -1,5 +1,6 @@
 jQuery(function () {
   window.initializedEditors = [];
+  var $ = $ || jQuery || django.jQuery;
 
   function initEditor() {
     $('textarea[data-type=imperavi-editor]').each(function () {
