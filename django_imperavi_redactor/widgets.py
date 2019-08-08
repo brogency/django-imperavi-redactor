@@ -4,7 +4,7 @@ from django.utils.safestring import mark_safe
 from django.urls import reverse_lazy
 from django.conf import settings
 
-from redactor.utils import json_dumps
+from .utils import json_dumps
 
 
 class RedactorEditor(widgets.Textarea):
