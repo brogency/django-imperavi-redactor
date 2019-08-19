@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-imperavi-redactor"
-version = "0.0.3a"
+version = "0.0.4a"
 description = "Django wrapper for use imperavi redactor."
 authors = ["Dmitry Bastrikin <dima.bastrikin@bro.agency>"]
 license = "MIT"
