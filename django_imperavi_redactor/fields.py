@@ -1,10 +1,9 @@
-from django.db.models import Field
-from django.conf import settings
+from django.db.models import TextField
 from django.contrib.admin import widgets as admin_widgets
 from .widgets import RedactorEditor
 
 
-class RedactorField(Field):
+class RedactorField(TextField):
     def __init__(self, *args, **kwargs):
         options = kwargs.pop('redactor_options', {})
         upload_to = kwargs.pop('upload_to', '')
@@ -18,9 +17,6 @@ class RedactorField(Field):
         )
         super(RedactorField, self).__init__(*args, **kwargs)
 
-    def get_internal_type(self):
-        return "TextField"
-
     def formfield(self, **kwargs):
         defaults = {'widget': self.widget}
         defaults.update(kwargs)
@@ -28,8 +24,3 @@ class RedactorField(Field):
         if defaults['widget'] == admin_widgets.AdminTextareaWidget:
             defaults['widget'] = self.widget
         return super(RedactorField, self).formfield(**defaults)
-
-
-if 'south' in settings.INSTALLED_APPS:
-    from south.modelsinspector import add_introspection_rules
-    add_introspection_rules([], ["^redactor\.fields\.RedactorField"])
