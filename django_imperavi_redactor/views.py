@@ -24,7 +24,7 @@ class RedactorUploadView(FormView):
     form_class = ImageForm
     http_method_names = ('post',)
     upload_to = getattr(settings, 'REDACTOR_UPLOAD', 'redactor/')
-    upload_handler = getattr(settings, 'REDACTOR_UPLOAD_HANDLER', 'apps.redactor.handlers.SimpleUploader')
+    upload_handler = getattr(settings, 'REDACTOR_UPLOAD_HANDLER', 'django_imperavi_redactor.handlers.UUIDDirectoryUploader')
     auth_decorator = getattr(settings, 'REDACTOR_AUTH_DECORATOR', staff_member_required)
     if isinstance(auth_decorator, basestring):
         # Given decorator is string, probably because user can't import eg.

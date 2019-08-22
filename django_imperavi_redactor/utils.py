@@ -1,3 +1,4 @@
+import json
 from django.core.exceptions import ImproperlyConfigured
 from importlib import import_module
 
@@ -6,8 +7,6 @@ try:
 except ImportError:
     from django.utils.encoding import force_unicode as force_text
 from django.utils.functional import Promise
-
-import json
 
 
 def import_class(path):
