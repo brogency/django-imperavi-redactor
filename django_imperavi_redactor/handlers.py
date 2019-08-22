@@ -93,6 +93,7 @@ class UUIDUploader(SimpleUploader):
             # save filename prevents the generation of a new
             extension = self.upload_file.name.split('.')[-1]
             self.filename = '{0}.{1}'.format(uuid.uuid4(), extension)
+
         return self.filename
 
 
@@ -106,4 +107,19 @@ class DateDirectoryUploader(SimpleUploader):
         upload_path = super(DateDirectoryUploader, self).get_upload_path()
         today = datetime.datetime.today()
         path = '{}/{}/{}/{}'.format(upload_path, today.year, today.month, today.day)
+
+        return path
+
+
+class UUIDDirectoryUploader(SimpleUploader):
+    """
+    Handler that saves files in a uuid directories, like as:
+
+    /od/2b/0d2b1d03-a626-40e9-90e3-8cb4c981d7e4/filename.etc
+    """
+    def get_upload_path(self):
+        upload_path = super().get_upload_path()
+        uuid_str = str(uuid.uuid4())
+        path = '{}/{}/{}/{}'.format(upload_path, uuid_str[0:2], uuid_str[2:4], uuid_str)
+
         return path
